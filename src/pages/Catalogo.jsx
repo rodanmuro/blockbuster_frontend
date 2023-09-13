@@ -6,4 +6,4 @@ const Catalogo = () => {
   )
 }
 
-export default Catalogo
+export default Catalogo 

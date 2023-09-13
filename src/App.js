@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { isLogged } from "./utils/apiFunctions";
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./router/Router";
 import Login from "./pages/Login";
+
 
 
 function App() {
@@ -15,10 +17,10 @@ function App() {
 
   useEffect(
     ()=>{
-      iniciar();
+     iniciar(); 
     },
     []
-  )
+  );
 
   return (
     <>
@@ -27,9 +29,7 @@ function App() {
         <BrowserRouter>
           <Router/>
         </BrowserRouter>
-      ):(
-        <Login/>
-      )
+      ):(<Login/>)
     }
     </>
   );
