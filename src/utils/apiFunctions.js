@@ -31,5 +31,3 @@ const isLogged = async ()=>{
 
     return logueado;
 }
-
-export {isLogged}

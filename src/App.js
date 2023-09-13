@@ -1,35 +1,24 @@
-
-import { useEffect, useState } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import { isLogged } from './utils/apiFunctions';
-import { Router } from 'express';
-import Login from './pages/Login';
 
 function App() {
-  const[logged, setLogged] = useState(false);
-const iniciar = async ()=>{
-  const valor = await isLogged();
-  setLogged(valor);
-}
-
-useEffect(
-  ()=>{
-    iniciar();
-  },
-  []
-);
-
   return (
-    <>
-    {
-      logged?(
-        <BrowserRouter></BrowserRouter>
-      ):(
-        <Login/>
-      )
-    }
-    </>
-    
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
