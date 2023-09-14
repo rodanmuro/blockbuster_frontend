@@ -8,6 +8,11 @@ const getJwt = ()=>{
     return jwt;
 }
 
+const setJwt = (jwt)=>{
+    let cookies = new Cookies();
+    cookies.set("jwt",jwt);
+}
+
 const isLogged = async ()=>{
     
     let jwt = getJwt() ? getJwt():"jwt";
@@ -32,4 +37,26 @@ const isLogged = async ()=>{
     return logueado;
 }
 
-export {isLogged}
+const login = async (username, password)=>{
+    let mensaje='';
+
+    await axios.post(API_ENDPOINTS.login,{
+        'username':username,
+        'password':password
+    })
+    .then(
+        (res)=>{
+            if(res.data.error){
+                mensaje=res.data.error;
+            }
+            if(res.data.jwt){
+                setJwt(res.data.jwt);
+                mensaje="success";
+            }
+        }
+    )
+
+    return mensaje;
+}
+
+export {isLogged, login}
