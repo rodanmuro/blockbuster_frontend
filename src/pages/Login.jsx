@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { login } from '../utils/apiFunctions';
+import { useNavigate } from 'react-router';
 
+import { loggedContext } from '../App';
 
 const Login = () => {
+
+  const navigate = useNavigate();
+  const {logged, setLogged} = useContext(loggedContext);
 
   const[username, setUsername] =useState('');
   const[password, setPassword] =useState('');
@@ -18,7 +23,8 @@ const Login = () => {
   const loguear = async ()=>{
     let mensaje = await login(username, password);
     if(mensaje=="success"){
-      window.location.replace("/")
+      setLogged(true);
+      navigate("/");
     }else{
       console.log(mensaje);
     }
