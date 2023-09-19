@@ -1,36 +1,19 @@
-import { useEffect, useState } from "react";
-import { isLogged } from "./utils/apiFunctions";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router/Router";
-import Login from "./pages/Login";
 
-
+export const loggedContext = React.createContext();
 
 function App() {
-
-  const[logged, setLogged] = useState(false);
-
-  const iniciar = async ()=>{
-    const valor = await isLogged();
-    setLogged(valor);
-  }
-
-  useEffect(
-    ()=>{
-     iniciar(); 
-    },
-    []
-  );
+  const [logged, setLogged] = useState(false);
 
   return (
     <>
-    {
-      logged ? (
+      <loggedContext.Provider value={{logged, setLogged}}>
         <BrowserRouter>
-          <Router/>
+          <Router />
         </BrowserRouter>
-      ):(<Login/>)
-    }
+      </loggedContext.Provider>
     </>
   );
 }
