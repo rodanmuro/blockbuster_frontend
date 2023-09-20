@@ -1,15 +1,13 @@
 import React, { useContext, useState } from 'react'
-import { getJwt, login } from '../utils/apiFunctions';
+import { login } from '../utils/apiFunctions';
 import { useNavigate } from 'react-router';
 
-import { loggedContext, userContext } from '../App';
-import jwtDecode from 'jwt-decode';
+import { loggedContext } from '../App';
 
 const Login = () => {
 
   const navigate = useNavigate();
   const {logged, setLogged} = useContext(loggedContext);
-  const {user, setUser} = useContext(userContext);
 
   const[username, setUsername] =useState('');
   const[password, setPassword] =useState('');
@@ -26,15 +24,6 @@ const Login = () => {
     let mensaje = await login(username, password);
     if(mensaje=="success"){
       setLogged(true);
-
-      if(getJwt()){
-        const data = jwtDecode(getJwt())
-        setUser({
-          username:data.username,
-          role:data.role
-        }) 
-      }
-
       navigate("/");
     }else{
       console.log(mensaje);

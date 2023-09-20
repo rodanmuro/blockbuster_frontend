@@ -59,4 +59,4 @@ const login = async (username, password)=>{
     return mensaje;
 }
 
-export {isLogged, login, getJwt}
+export {isLogged, login}
