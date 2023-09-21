@@ -1,5 +1,4 @@
 import React from 'react'
-import './LoginRegister.css'
 import { getJwt, login, registrar } from '../../utils/apiFunctions';
 import { useNavigate } from 'react-router';
 
@@ -48,38 +47,54 @@ const LoginRegister = () => {
         }
     }
 
-    const registrando = async () => {
+    const registrando = async ()=>{
         await registrar(username, password);
     }
 
     return (
-        <div className='mt-4 cont-formulario'>
-            <h2>{registro ? 'Registrarse' : 'Inicia Sesión'}</h2>
+        <div>
+            {
+                registro ? (
+                    <div>
+                        <div>No tienes una cuenta, regístrate</div>
+                        <div>
+                            <label>Username</label>
+                            <input type="text" onChange={handleChangeUsername} />
+                        </div>
 
-            <div>
-                <div className='text-center'>Inicia sesión</div>
-                <div className='pt-5 mb-3'>
+                        <div>
+                            <label>Password</label>
+                            <input type="password" onChange={handleChangePassword} />
+                        </div>
 
-                    <input className='form-control' type="text" onChange={handleChangeUsername} />
-                </div>
+                        <div>
+                            <button onClick={registrando}>Registrar</button>
+                        </div>
 
-                <div className='pt-5 mb-3'>
+                    </div>
 
-                    <input className='form-control' type="password" onChange={handleChangePassword} />
-                </div>
+                ) : (
+                    <div>
+                        <div>Inicia sesión</div>
+                        <div>
+                            <label>Username</label>
+                            <input type="text" onChange={handleChangeUsername} />
+                        </div>
 
-                <div>
-                    {registro ? (
-                        <button className='btn-login' onClick={registrando}>Registrarse</button>
-                    ) : (
-                        <button className='btn-login' onClick={loguear}>Ingresar</button>
-                    )
-                    }
-                </div>
-            </div>
-            <div>
-                <button className='btn-opcion mt-3' onClick={() => setRegistro(!registro)}>{registro ? 'Ya tienes una cuenta, inicia sesión' : 'No tienes una cuenta, regístrate'}</button>
-            </div>
+                        <div>
+                            <label>Password</label>
+                            <input type="password" onChange={handleChangePassword} />
+                        </div>
+
+                        <div>
+                            <button onClick={loguear}>Ingresar</button>
+                        </div>
+                    </div>
+                )
+            }
+
+            <button onClick={()=>setRegistro(!registro)}>{registro?'Ya tienes una cuenta, inicia sesión':'No tienes una cuenta, regístrate'}</button>
+
         </div>
     )
 }
