@@ -2,6 +2,28 @@
   text-align: center;
 }
 
+body {
+  background-color: #000;
+  
+}
+
+.t-image{
+  width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, p {
+  color: white;
+}
+
+.sin-m{
+  margin: 0;
+}
+
+.sin-p{
+  padding: 0;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +58,5 @@
     transform: rotate(360deg);
   }
 }
+
+

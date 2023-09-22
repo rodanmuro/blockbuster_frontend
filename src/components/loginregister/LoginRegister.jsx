@@ -1,3 +1,5 @@
+import './LoginRegister.css'
+
 import React, { useContext, useState } from 'react'
 import { getJwt, login, registrar } from '../../utils/apiFunctions';
 import { useNavigate } from 'react-router';
@@ -47,33 +49,32 @@ const LoginRegister = () => {
 
     const registrando = async () => {
         await registrar(username, password);
+        
     }
 
     return (
-        <div>
-            <h2> {registro ? 'Regístrate, si aún no tienes cuenta' : 'Inicia Sesión'} </h2>
-            <div>
-                <label>Username</label>
-                <input type="text" onChange={handleChangeUsername} />
+        <div className='mt-4 cont-formulario'>
+            <h2 className='text-center'> {registro ? 'Regístrate, si aún no tienes cuenta' : 'Inicia Sesión'} </h2>
+            <div className='pt-2 mb-1'>
+                <input className='form-control' placeholder='Username' type="text" onChange={handleChangeUsername} />
             </div>
 
-            <div>
-                <label>Password</label>
-                <input type="password" onChange={handleChangePassword} />
+            <div className='pt-2 mb-1'>
+                <input className='form-control' placeholder='Password' type="password" onChange={handleChangePassword} />
             </div>
 
             <div>
                 {
                     registro ? (
-                        <button onClick={registrando}>Registrar</button>
+                        <button className='mt-2 btn-login' onClick={registrando}>Registrar</button>
                     ) : (
-                        <button onClick={loguear}>Ingresar</button>
+                        <button className='mt-2 btn-login' onClick={loguear}>Ingresar</button>
                     )
                 }
             </div>
 
             <div>
-                <button onClick={()=>setRegistro(!registro)} >
+                <button className='mt-5 btn-opcion' onClick={()=>setRegistro(!registro)} >
                     {registro ? 'Ya tienes una cuenta?, Inicia sesión':'No tienes una cuenta, regístrate'}
                 </button>
             </div>
