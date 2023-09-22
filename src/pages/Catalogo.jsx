@@ -1,13 +1,8 @@
-import React, { useContext } from 'react'
-
-import { userContext } from '../App'
+import React from 'react'
 
 const Catalogo = () => {
-
-const {user} = useContext(userContext);
-
   return (
-    <div>Catalogo Hola {user.username} con role {user.role}</div>
+    <div>Catalogo</div>
   )
 }
 
