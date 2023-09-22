@@ -59,4 +59,17 @@ const login = async (username, password)=>{
     return mensaje;
 }
 
-export {isLogged, login}
+const registrar = async (username, password)=>{
+
+    await axios.post(API_ENDPOINTS.registro,{
+        email:username,
+        password:password
+    }).then(
+        (res)=>{
+            console.log(res.data);
+        }
+    )
+
+}
+
+export {isLogged, login, getJwt, registrar}
