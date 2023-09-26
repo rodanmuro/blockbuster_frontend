@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react'
 import { getJwt, login, registrar } from '../../utils/apiFunctions';
 import { useNavigate } from 'react-router';
 
-import { alertContext, loggedContext, userContext } from '../../App';
+import { loggedContext, userContext } from '../../App';
 import jwtDecode from 'jwt-decode';
 
 const LoginRegister = () => {
@@ -12,7 +12,6 @@ const LoginRegister = () => {
     const navigate = useNavigate();
     const { logged, setLogged } = useContext(loggedContext);
     const { user, setUser } = useContext(userContext);
-    const { swalProps, setSwalProps } = useContext(alertContext);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -49,13 +48,8 @@ const LoginRegister = () => {
     }
 
     const registrando = async () => {
-        let mensaje = "";
-        mensaje = await registrar(username, password);
-        setSwalProps({
-            show: true,
-            title: "Notificación",
-            text: mensaje
-        })
+        await registrar(username, password);
+        
     }
 
     return (
@@ -80,8 +74,8 @@ const LoginRegister = () => {
             </div>
 
             <div>
-                <button className='mt-5 btn-opcion' onClick={() => setRegistro(!registro)} >
-                    {registro ? 'Ya tienes una cuenta?, Inicia sesión' : 'No tienes una cuenta, regístrate'}
+                <button className='mt-5 btn-opcion' onClick={()=>setRegistro(!registro)} >
+                    {registro ? 'Ya tienes una cuenta?, Inicia sesión':'No tienes una cuenta, regístrate'}
                 </button>
             </div>
 

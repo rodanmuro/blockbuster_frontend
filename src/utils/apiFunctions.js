@@ -61,26 +61,14 @@ const login = async (username, password)=>{
 
 const registrar = async (username, password)=>{
 
-    let mensaje = "";
-
     await axios.post(API_ENDPOINTS.registro,{
         email:username,
         password:password
     }).then(
         (res)=>{
-            if(res.data.mensaje==="registrado"){
-                mensaje="Usuario "+username+" registrado correctamente"
-            }
-            if(res.data.mensaje==="duplicado"){
-                mensaje="Usuario "+username+" ya existe"
-            }
-            if(res.data.mensaje==="longitud de contraseña menor a 8"){
-                mensaje="La contraseña es demasiado corta. Debe tener al menos 8 caracteres"
-            }
+            console.log(res.data);
         }
     )
-
-    return mensaje;
 
 }
 
