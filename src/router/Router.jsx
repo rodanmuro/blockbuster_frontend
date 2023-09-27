@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import { loggedContext, userContext } from '../App';
 import ProtectedRoute from './ProtectedRoute';
 import jwtDecode from 'jwt-decode';
+import MoviesTMDB from '../pages/MoviesTMDB';
 
 const Router = () => {
 
@@ -20,19 +21,19 @@ const Router = () => {
   const iniciar = async () => {
     const valor = await isLogged();
 
-    if(getJwt()){
+    if (getJwt()) {
       const data = jwtDecode(getJwt());
 
       setUser(
         {
-          username:data.username,
-          role:data.role
+          username: data.username,
+          role: data.role
         }
       );
     }
 
     setLogged(valor);
-    navigate("/")
+    navigate()
   }
 
   useEffect(
@@ -47,6 +48,12 @@ const Router = () => {
       <Route path="/" element={
         <ProtectedRoute logged={logged}>
           <Catalogo />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/themoviedb" element={
+        <ProtectedRoute logged={logged}>
+          <MoviesTMDB />
         </ProtectedRoute>
       } />
 
