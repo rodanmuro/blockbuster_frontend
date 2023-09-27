@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { userContext } from '../App'
 import { obtenerPeliculasCatalogo } from '../utils/apiFunctions';
 import CardMovie from '../components/cardmovie/CardMovie';
-import { Link } from 'react-router-dom';
 
 const Catalogo = () => {
 
@@ -25,7 +24,7 @@ const Catalogo = () => {
   return (
 
     <>
-<Link to="/themoviedb">Themoviedb</Link>
+
       <div className='row'>
         <div className='col-12'>
           <h2 className='text-center py-5'>
