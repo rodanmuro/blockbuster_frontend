@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import { userContext } from '../App'
 import { obtenerPeliculasCatalogo } from '../utils/apiFunctions';
+import CardMovie from '../components/cardmovie/CardMovie';
 
 const Catalogo = () => {
 
@@ -24,9 +25,7 @@ useEffect(
     <div>
       {
         movies.map((movie)=>(
-          <div style={{color:"white"}}>
-            {movie.title}
-          </div>
+          <CardMovie movie={movie}/>
         ))
       }
     </div>
