@@ -2,34 +2,49 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import { userContext } from '../App'
 import { obtenerPeliculasCatalogo } from '../utils/apiFunctions';
+import CardMovie from '../components/cardmovie/CardMovie';
 
 const Catalogo = () => {
 
-const {user} = useContext(userContext);
-const [movies, setMovies] = useState([]);
+  const { user } = useContext(userContext);
+  const [movies, setMovies] = useState([]);
 
-const cargarPeliculas = async()=>{
-   let data = await obtenerPeliculasCatalogo();
-   setMovies(data);
-}
+  const cargarPeliculas = async () => {
+    let data = await obtenerPeliculasCatalogo();
+    setMovies(data);
+  }
 
-useEffect(
-  ()=>{
-    cargarPeliculas();
-  },
-  []
-)
+  useEffect(
+    () => {
+      cargarPeliculas();
+    },
+    []
+  )
 
   return (
-    <div>
-      {
-        movies.map((movie)=>(
-          <div style={{color:"white"}}>
-            {movie.title}
-          </div>
-        ))
-      }
-    </div>
+
+    <>
+
+      <div className='row'>
+        <div className='col-12'>
+          <h2 className='text-center py-5'>
+            Catálogo de Películas
+          </h2>
+        </div>
+      </div>
+
+      <div className='container'>
+        <div className='row pt-3 d-flex justify-content-center'>
+          {
+            movies.map((movie) => (
+              <CardMovie movie={movie} />
+            ))
+          }
+        </div>
+      </div>
+
+    </>
+
   )
 }
 
