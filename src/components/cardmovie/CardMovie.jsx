@@ -37,7 +37,7 @@ let id = movie.idPelicula===undefined?movie.id:movie.idPelicula;
 
       <p className='text-justify' style={{fontSize:14}}>
         <b style={{fontSize:18}}>Descripción</b>
-        {movie.overview}
+        {movie.overview.slice(0,250)}...
       </p>
 
     </div>

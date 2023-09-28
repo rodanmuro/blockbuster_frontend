@@ -86,7 +86,6 @@ const registrar = async (username, password) => {
 }
 
 const obtenerPeliculasCatalogo = async () => {
-
     let jwt = getJwt();
 
     let mensaje = [];
@@ -102,9 +101,41 @@ const obtenerPeliculasCatalogo = async () => {
             }
         }
     )
+    return mensaje;
+}
 
+const obtenerPeliculasTMDB = async (query)=>{
+
+    let endpoint = "";
+    if(query){
+        endpoint = API_ENDPOINTS.themoviedb+"?query="+query;
+    }else{
+        endpoint = API_ENDPOINTS.themoviedb;
+    }
+
+    let jwt = getJwt();
+
+    let mensaje = [];
+
+    await axios.get(endpoint, {
+        headers: {
+            'Authorization': `Bearer ${jwt}`
+        }
+    }).then(
+        (res) => {
+            if(res.data){
+                mensaje = res.data.results;
+            }
+        }
+    )
     return mensaje;
 
 }
 
-export { isLogged, login, getJwt, registrar, obtenerPeliculasCatalogo }
+
+export { isLogged, 
+    login, 
+    getJwt, 
+    registrar, 
+    obtenerPeliculasCatalogo, 
+    obtenerPeliculasTMDB }
