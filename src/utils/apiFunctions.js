@@ -132,10 +132,46 @@ const obtenerPeliculasTMDB = async (query)=>{
 
 }
 
+const obtenerPeliculasAlquiladas = async (query)=>{
+
+    let jwt = getJwt();
+
+    let mensaje = [];
+
+    await axios.get(API_ENDPOINTS.peliculaalquilada, {
+        headers: {
+            'Authorization': `Bearer ${jwt}`
+        }
+    }).then(
+        (res) => {
+            if(res.data){
+                mensaje = res.data.map(
+                    (movie)=>{
+                        return {
+                            idAlquilada:movie.idAlquilada,
+                            poster_path:movie.peliculaCatalogo.poster_path,
+                            title:movie.peliculaCatalogo.title,
+                            release_date:movie.peliculaCatalogo.release_date,
+                            original_language:movie.peliculaCatalogo.original_language,
+                            vote_average:movie.peliculaCatalogo.vote_average,
+                            overview:movie.peliculaCatalogo.overview,
+                        }
+                    }
+                )
+            }
+        }
+    )
+
+    console.log(mensaje);
+    return mensaje;
+
+}
+
 
 export { isLogged, 
     login, 
     getJwt, 
     registrar, 
     obtenerPeliculasCatalogo, 
-    obtenerPeliculasTMDB }
+    obtenerPeliculasTMDB,
+    obtenerPeliculasAlquiladas }
