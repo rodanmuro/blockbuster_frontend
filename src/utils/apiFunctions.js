@@ -132,10 +132,45 @@ const obtenerPeliculasTMDB = async (query)=>{
 
 }
 
+const obtenerPeliculasAlquiladas = async ()=>{
+
+    let jwt = getJwt();
+
+    let mensaje = [];
+
+    await axios.get(API_ENDPOINTS.mispeliculas, {
+        headers: {
+            'Authorization': `Bearer ${jwt}`
+        }
+    }).then(
+        (res) => {
+            if(res.data){
+                mensaje = res.data.map(
+                    (movie)=>{
+                        return {
+                            idAlquilada: movie.idAlquilada,
+                            poster_path: movie.peliculaCatalogo.poster_path,
+                            title: movie.peliculaCatalogo.title,
+                            release_data: movie.peliculaCatalogo.release_data,
+                            original_language: movie.peliculaCatalogo.original_language,
+                            vote_average: movie.peliculaCatalogo.vote_average,
+                            overview: movie.peliculaCatalogo.overview,
+
+                        }
+                    }
+                )
+            }
+        }
+    )
+    return mensaje;
+
+}
+
 
 export { isLogged, 
     login, 
     getJwt, 
     registrar, 
     obtenerPeliculasCatalogo, 
-    obtenerPeliculasTMDB }
+    obtenerPeliculasTMDB,
+    obtenerPeliculasAlquiladas }

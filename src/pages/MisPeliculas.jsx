@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 
 import { userContext } from '../App'
-import { obtenerPeliculasCatalogo } from '../utils/apiFunctions';
+import { obtenerPeliculasAlquiladas, obtenerPeliculasCatalogo, obtenerPeliculasTMDB } from '../utils/apiFunctions';
 import CardMovie from '../components/cardmovie/CardMovie';
-import { Link } from 'react-router-dom';
 
-const Catalogo = () => {
+const MisPeliculas = () => {
 
   const { user } = useContext(userContext);
   const [movies, setMovies] = useState([]);
 
   const cargarPeliculas = async () => {
-    let data = await obtenerPeliculasCatalogo();
+    let data = await obtenerPeliculasAlquiladas();
     setMovies(data);
   }
 
@@ -25,13 +24,11 @@ const Catalogo = () => {
   return (
 
     <>
-      <Link to="/themoviedb">Movies TMDB</Link>
-      <br />
-      <Link to="/mispeliculas">Mis Películas</Link>
+
       <div className='row'>
         <div className='col-12'>
           <h2 className='text-center py-5'>
-            Catálogo de Películas
+            Mis Películas
           </h2>
         </div>
       </div>
@@ -51,4 +48,4 @@ const Catalogo = () => {
   )
 }
 
-export default Catalogo 
+export default MisPeliculas
