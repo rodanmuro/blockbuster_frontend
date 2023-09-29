@@ -4,7 +4,7 @@ import "./CardMovie.css"
 
 const CardMovie = ({movie}) => {
 
-let id = movie.idPelicula===undefined?movie.idAlquilada:movie.idPelicula;
+let id = movie.idPelicula===undefined?movie.id:movie.idPelicula;
 
   return (
     <div 

@@ -10,7 +10,6 @@ import { loggedContext, userContext } from '../App';
 import ProtectedRoute from './ProtectedRoute';
 import jwtDecode from 'jwt-decode';
 import MoviesTMDB from '../pages/MoviesTMDB';
-import MisPeliculas from '../pages/MisPeliculas';
 
 const Router = () => {
 
@@ -55,12 +54,6 @@ const Router = () => {
       <Route path="/themoviedb" element={
         <ProtectedRoute logged={logged}>
           <MoviesTMDB />
-        </ProtectedRoute>
-      } />
-
-      <Route path="/mispeliculas" element={
-        <ProtectedRoute logged={logged}>
-          <MisPeliculas />
         </ProtectedRoute>
       } />
 
