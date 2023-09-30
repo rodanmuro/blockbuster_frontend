@@ -4,17 +4,14 @@ import { userContext } from '../App'
 import { obtenerPeliculasCatalogo, obtenerPeliculasTMDB } from '../utils/apiFunctions';
 import CardMovie from '../components/cardmovie/CardMovie';
 
-import { moviesTMDBcontext } from '../App';
-
 const MoviesTMDB = () => {
 
   const { user } = useContext(userContext);
-  const {moviesTMDB, setMoviesTMDB}=useContext(moviesTMDBcontext)
-  
+  const [movies, setMovies] = useState([]);
 
   const cargarPeliculas = async () => {
     let data = await obtenerPeliculasTMDB();
-    setMoviesTMDB(data);
+    setMovies(data);
   }
 
   useEffect(
@@ -39,7 +36,7 @@ const MoviesTMDB = () => {
       <div className='container'>
         <div className='row pt-3 d-flex justify-content-center'>
           {
-            moviesTMDB.map((movie) => (
+            movies.map((movie) => (
               <CardMovie movie={movie} />
             ))
           }
