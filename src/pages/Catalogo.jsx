@@ -25,9 +25,7 @@ const Catalogo = () => {
   return (
 
     <>
-      <Link to="/themoviedb">Movies TMDB</Link>
-      <br />
-      <Link to="/mispeliculas">Mis Películas</Link>
+      
       <div className='row'>
         <div className='col-12'>
           <h2 className='text-center py-5'>
