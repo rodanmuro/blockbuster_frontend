@@ -1,7 +1,10 @@
+import "./Navbar.css"
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import { userContext } from '../../App'
+import Buscar from '../buscar/Buscar';
+import UserLogout from '../userlogout/UserLogout';
 
 const Navbar = () => {
 
@@ -37,11 +40,20 @@ const Navbar = () => {
                             </li>
 
                             <li className='nav-item'>
-                                <Link to={user.role==='ADMIN'?'/themoviedb':'/mispeliculas'} className='nav-link' ></Link>
+                                <Link to={user.role==='ADMIN'?'/themoviedb':'/mispeliculas'} className='nav-link' >
+                                    {user.role==='ADMIN'?'Movies API TMDB':'Mis películas'}
+                                </Link>
                             </li>
+
+                            {
+                                user.role==="ADMIN"?(<li className='nav-item'>
+                                    <Buscar/>
+                                </li>):('')
+                            }
 
                         </ul>
 
+                        
 
                     </div>
 
