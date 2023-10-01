@@ -52,9 +52,7 @@ const Navbar = () => {
                             }
 
                         </ul>
-
-                        
-
+                            <UserLogout/>
                     </div>
 
                 </div>
