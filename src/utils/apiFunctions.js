@@ -96,7 +96,7 @@ const obtenerPeliculasCatalogo = async () => {
         }
     }).then(
         (res) => {
-            if(res.data){
+            if (res.data) {
                 mensaje = res.data;
             }
         }
@@ -104,12 +104,12 @@ const obtenerPeliculasCatalogo = async () => {
     return mensaje;
 }
 
-const obtenerPeliculasTMDB = async (query)=>{
+const obtenerPeliculasTMDB = async (query) => {
 
     let endpoint = "";
-    if(query){
-        endpoint = API_ENDPOINTS.themoviedb+"?query="+query;
-    }else{
+    if (query) {
+        endpoint = API_ENDPOINTS.themoviedb + "?query=" + query;
+    } else {
         endpoint = API_ENDPOINTS.themoviedb;
     }
 
@@ -123,7 +123,7 @@ const obtenerPeliculasTMDB = async (query)=>{
         }
     }).then(
         (res) => {
-            if(res.data){
+            if (res.data) {
                 mensaje = res.data.results;
             }
         }
@@ -132,7 +132,7 @@ const obtenerPeliculasTMDB = async (query)=>{
 
 }
 
-const obtenerPeliculasAlquiladas = async ()=>{
+const obtenerPeliculasAlquiladas = async () => {
 
     let jwt = getJwt();
 
@@ -144,9 +144,9 @@ const obtenerPeliculasAlquiladas = async ()=>{
         }
     }).then(
         (res) => {
-            if(res.data){
+            if (res.data) {
                 mensaje = res.data.map(
-                    (movie)=>{
+                    (movie) => {
                         return {
                             idAlquilada: movie.idAlquilada,
                             poster_path: movie.peliculaCatalogo.poster_path,
@@ -166,11 +166,33 @@ const obtenerPeliculasAlquiladas = async ()=>{
 
 }
 
+const guardarPeliculaCatalogo = async (movie) => {
+    let jwt = getJwt();
 
-export { isLogged, 
-    login, 
-    getJwt, 
-    registrar, 
-    obtenerPeliculasCatalogo, 
+    let mensaje = "";
+
+    await axios.post(API_ENDPOINTS.peliculacatalogo,
+        movie, {
+        headers: {
+            'Authorization': `Bearer ${jwt}`
+        }
+    }
+    ).then((res)=>{
+        mensaje = res.data.idAlquilada;
+    });
+
+    return mensaje;
+
+}
+
+
+export {
+    isLogged,
+    login,
+    getJwt,
+    registrar,
+    obtenerPeliculasCatalogo,
     obtenerPeliculasTMDB,
-    obtenerPeliculasAlquiladas }
+    obtenerPeliculasAlquiladas,
+    guardarPeliculaCatalogo
+}
