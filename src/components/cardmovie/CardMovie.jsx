@@ -1,16 +1,10 @@
 import React from 'react'
 import { API_ENDPOINTS } from '../../utils/apiEndpoints';
 import "./CardMovie.css"
-import Alquilar from '../alquilar/Alquilar';
 
-const CardMovie = ({movie, tipo}) => {
+const CardMovie = ({movie}) => {
 
 let id = movie.idPelicula===undefined?movie.idAlquilada:movie.idPelicula;
-
-let tipoBoton = "";
-if(tipo==='alquilar' || tipo==='agregar'){
-  tipoBoton = <Alquilar movie={movie}/>
-}
 
   return (
     <div 
@@ -26,8 +20,6 @@ if(tipo==='alquilar' || tipo==='agregar'){
           className='img-movie'
           />
         </div>
-
-        {tipoBoton}
 
     <div className='px-3 pt-2'>
       <h2 className='pt-3' >
