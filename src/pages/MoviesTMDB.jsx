@@ -7,7 +7,6 @@ import CardMovie from '../components/cardmovie/CardMovie';
 import { moviesTMDBContext } from '../App';
 
 const MoviesTMDB = () => {
-  let tipo = 'alquilar';
 
   const { user } = useContext(userContext);
 
@@ -41,7 +40,7 @@ const MoviesTMDB = () => {
         <div className='row pt-3 d-flex justify-content-center'>
           {
             moviesTMDB.map((movie) => (
-              <CardMovie movie={movie} tipo={tipo}/>
+              <CardMovie movie={movie} />
             ))
           }
         </div>
