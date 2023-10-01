@@ -10,8 +10,6 @@ const Catalogo = () => {
   const { user } = useContext(userContext);
   const [movies, setMovies] = useState([]);
 
-  let tipo = user.role==='ADMIN'?'eliminar':'alquilar'
-
   const cargarPeliculas = async () => {
     let data = await obtenerPeliculasCatalogo();
     setMovies(data);
@@ -39,7 +37,7 @@ const Catalogo = () => {
         <div className='row pt-3 d-flex justify-content-center'>
           {
             movies.map((movie) => (
-              <CardMovie movie={movie} tipo={tipo}/>
+              <CardMovie movie={movie} />
             ))
           }
         </div>

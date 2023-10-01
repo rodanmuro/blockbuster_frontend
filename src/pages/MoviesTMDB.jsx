@@ -10,8 +10,6 @@ const MoviesTMDB = () => {
 
   const { user } = useContext(userContext);
 
-  let tipo='agregar';
-
   const {moviesTMDB, setMoviesTMDB} = useContext(moviesTMDBContext);
 
   const cargarPeliculas = async () => {
@@ -42,7 +40,7 @@ const MoviesTMDB = () => {
         <div className='row pt-3 d-flex justify-content-center'>
           {
             moviesTMDB.map((movie) => (
-              <CardMovie movie={movie} tipo={tipo} />
+              <CardMovie movie={movie} />
             ))
           }
         </div>

@@ -6,8 +6,7 @@ const API_ENDPOINTS = {
     peliculacatalogo: `${API_BASE_URL}/peliculacatalogo`,
     urlImage:"https://image.tmdb.org/t/p/original",
     themoviedb:`${API_BASE_URL}/themoviedb`,
-    mispeliculas:`${API_BASE_URL}/peliculaalquilada`,
-    guardarPeliculaCatalogo: `${API_BASE_URL}/peliculacatalogo`
+    mispeliculas:`${API_BASE_URL}/peliculaalquilada`
 }
 
 export {API_ENDPOINTS}
