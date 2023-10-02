@@ -40,7 +40,7 @@ const MoviesTMDB = () => {
         <div className='row pt-3 d-flex justify-content-center'>
           {
             moviesTMDB.map((movie) => (
-              <CardMovie movie={movie} />
+              <CardMovie movie={movie} tipo="agregar"/>
             ))
           }
         </div>
