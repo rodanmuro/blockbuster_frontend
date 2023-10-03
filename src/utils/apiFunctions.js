@@ -190,10 +190,34 @@ const guardarPeliculaCatalogo = async (movie) => {
     return mensaje;
 }
 
-const logout = ()=>{
+const logout = () => {
     let cookies = new Cookies();
     cookies.remove("jwt");
     window.location.href = "/";
+}
+
+const agregarPeliculaAlquilada = async (movie) => {
+    let mensaje = "";
+    let jwt = getJwt();
+
+    await axios.post(
+        API_ENDPOINTS.mispeliculas,
+        {
+            idPelicula: movie.idPelicula
+        },
+        {
+            headers: {
+                'Authorization': `Bearer ${jwt}`
+            }
+        }
+    ).then((res)=>{
+        mensaje = res.data.idAlquilada
+    })
+    .catch((error)=>{
+        mensaje = error.response.data.mensaje
+    })
+
+    return mensaje;
 }
 
 
@@ -206,5 +230,6 @@ export {
     obtenerPeliculasTMDB,
     obtenerPeliculasAlquiladas,
     guardarPeliculaCatalogo,
-    logout
+    logout,
+    agregarPeliculaAlquilada
 }

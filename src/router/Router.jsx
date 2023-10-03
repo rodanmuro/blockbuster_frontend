@@ -11,6 +11,7 @@ import ProtectedRoute from './ProtectedRoute';
 import jwtDecode from 'jwt-decode';
 import MoviesTMDB from '../pages/MoviesTMDB';
 import MisPeliculas from '../pages/MisPeliculas';
+import Navbar from '../components/navbar/Navbar';
 
 const Router = () => {
 
@@ -48,18 +49,21 @@ const Router = () => {
     <Routes>
       <Route path="/" element={
         <ProtectedRoute logged={logged}>
+          <Navbar />
           <Catalogo />
         </ProtectedRoute>
       } />
 
       <Route path="/themoviedb" element={
         <ProtectedRoute logged={logged}>
+          <Navbar />
           <MoviesTMDB />
         </ProtectedRoute>
       } />
 
       <Route path="/mispeliculas" element={
         <ProtectedRoute logged={logged}>
+          <Navbar />
           <MisPeliculas/>
         </ProtectedRoute>
       } />

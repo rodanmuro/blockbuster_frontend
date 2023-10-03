@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 
 import { userContext } from "../../App"
-import { guardarPeliculaCatalogo } from '../../utils/apiFunctions';
+import { agregarPeliculaAlquilada, guardarPeliculaCatalogo } from '../../utils/apiFunctions';
 
 const Alquilar = ({movie}) => {
 
@@ -17,7 +17,7 @@ const Alquilar = ({movie}) => {
                 className='btn-success position-absolute end-0 top-0 m-4'
                 onClick={
                     ()=>(
-                        user.role==='ADMIN'?guardarPeliculaCatalogo(movie):sololog()
+                        user.role==='ADMIN'?guardarPeliculaCatalogo(movie):agregarPeliculaAlquilada(movie)
                     )
                 }
             >
