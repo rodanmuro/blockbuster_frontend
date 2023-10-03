@@ -25,7 +25,7 @@ function App() {
           <userContext.Provider value={{ user, setUser }}>
             <loggedContext.Provider value={{ logged, setLogged }}>
               <BrowserRouter>
-                <Navbar />
+                
                 <Router />
               </BrowserRouter>
               <Alert />
