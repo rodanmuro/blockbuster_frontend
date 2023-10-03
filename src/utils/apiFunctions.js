@@ -190,6 +190,12 @@ const guardarPeliculaCatalogo = async (movie) => {
     return mensaje;
 }
 
+const logout = ()=>{
+    let cookies = new Cookies();
+    cookies.remove("jwt");
+    window.location.href = "/";
+}
+
 
 export {
     isLogged,
@@ -199,5 +205,6 @@ export {
     obtenerPeliculasCatalogo,
     obtenerPeliculasTMDB,
     obtenerPeliculasAlquiladas,
-    guardarPeliculaCatalogo
+    guardarPeliculaCatalogo,
+    logout
 }
