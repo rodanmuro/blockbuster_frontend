@@ -8,7 +8,7 @@ import UserLogout from '../userlogout/UserLogout';
 
 const Navbar = () => {
 
-    const { user, setUser } = useContext(userContext);
+    const {user, setUser} = useContext(userContext);
 
     return (
         <div>
@@ -40,19 +40,21 @@ const Navbar = () => {
                             </li>
 
                             <li className='nav-item'>
-                                <Link to={user.role === 'ADMIN' ? '/themoviedb' : '/mispeliculas'} className='nav-link' >
-                                    {user.role === 'ADMIN' ? 'Movies API TMDB' : 'Mis películas'}
+                                <Link to={user.role==='ADMIN'?'/themoviedb':'/mispeliculas'} className='nav-link' >
+                                    {user.role==='ADMIN'?'Movies API TMDB':'Mis películas'}
                                 </Link>
                             </li>
 
                             {
-                                user.role === "ADMIN" ? (<li className='nav-item'>
-                                    <Buscar />
-                                </li>) : ('')
+                                user.role==="ADMIN"?(<li className='nav-item'>
+                                    <Buscar/>
+                                </li>):('')
                             }
 
                         </ul>
-                        <UserLogout />
+
+                        
+
                     </div>
 
                 </div>
