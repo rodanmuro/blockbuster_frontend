@@ -8,7 +8,6 @@ export const loggedContext = React.createContext();
 export const userContext = React.createContext();
 export const alertContext = React.createContext();
 export const moviesTMDBContext = React.createContext();
-export const moviesCatalogoContext = React.createContext();
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -18,16 +17,15 @@ function App() {
   });
   const [swalProps, setSwalProps] = useState({});
   const [moviesTMDB, setMoviesTMDB] = useState([]);
-  const [moviesCatalogo, setMoviesCatalogo] = useState([]);
 
   return (
     <>
-    <moviesCatalogoContext.Provider value={{ moviesCatalogo, setMoviesCatalogo }}>
       <moviesTMDBContext.Provider value={{ moviesTMDB, setMoviesTMDB }}>
         <alertContext.Provider value={{ swalProps, setSwalProps }}>
           <userContext.Provider value={{ user, setUser }}>
             <loggedContext.Provider value={{ logged, setLogged }}>
               <BrowserRouter>
+                
                 <Router />
               </BrowserRouter>
               <Alert />
@@ -35,7 +33,6 @@ function App() {
           </userContext.Provider>
         </alertContext.Provider>
       </moviesTMDBContext.Provider>
-    </moviesCatalogoContext.Provider>
     </>
   );
 }
