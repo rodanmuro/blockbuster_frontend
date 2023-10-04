@@ -2,6 +2,7 @@ import React from 'react'
 import { API_ENDPOINTS } from '../../utils/apiEndpoints';
 import "./CardMovie.css"
 import Alquilar from '../alquilar/Alquilar';
+import Devolver from '../devolver/Devolver';
 
 const CardMovie = ({movie, tipo}) => {
 
@@ -10,6 +11,10 @@ let tipoBoton = "";
 
 if(tipo==='alquilar' || tipo==='agregar'){
   tipoBoton = <Alquilar movie={movie}/>
+}
+
+if(tipo==='devolver'){
+  tipoBoton = <Devolver movie={movie}/>
 }
 
 

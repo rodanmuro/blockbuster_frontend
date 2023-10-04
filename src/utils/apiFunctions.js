@@ -210,14 +210,53 @@ const agregarPeliculaAlquilada = async (movie) => {
                 'Authorization': `Bearer ${jwt}`
             }
         }
-    ).then((res)=>{
+    ).then((res) => {
         mensaje = res.data.idAlquilada
     })
-    .catch((error)=>{
-        mensaje = error.response.data.mensaje
-    })
+        .catch((error) => {
+            mensaje = error.response.data.mensaje
+        })
 
     return mensaje;
+}
+
+const eliminarPeliculaCatalogo = async (idPelicula) => {
+
+    let mensaje = "";
+    let jwt = getJwt();
+
+    await axios
+        .delete(API_ENDPOINTS.peliculacatalogo + "/" + idPelicula,
+            {
+                headers: {
+                    'Authorization': `Bearer ${jwt}`
+                }
+            }
+        )
+        .then(
+            (res) => {
+                console.log(res.message);
+            }
+        )
+}
+
+const devolverPeliculaAlquilada = async (idAlquilada) => {
+
+    let mensaje = "";
+    let jwt = getJwt();
+
+    await axios
+        .delete(API_ENDPOINTS.mispeliculas + "/" + idAlquilada,
+        {
+            headers: {
+                'Authorization': `Bearer ${jwt}`
+            }
+        })
+        .then(
+            (res) => {
+                console.log(res.status);
+            }
+        )
 }
 
 
@@ -231,5 +270,7 @@ export {
     obtenerPeliculasAlquiladas,
     guardarPeliculaCatalogo,
     logout,
-    agregarPeliculaAlquilada
+    agregarPeliculaAlquilada,
+    eliminarPeliculaCatalogo,
+    devolverPeliculaAlquilada
 }

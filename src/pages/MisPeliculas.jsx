@@ -37,7 +37,7 @@ const MisPeliculas = () => {
         <div className='row pt-3 d-flex justify-content-center'>
           {
             movies.map((movie) => (
-              <CardMovie movie={movie} />
+              <CardMovie movie={movie} tipo="devolver"/>
             ))
           }
         </div>
