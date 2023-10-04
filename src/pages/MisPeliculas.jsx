@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 
-import { userContext } from '../App'
+import { userContext, moviesAlquiladasContext } from '../App'
 import { obtenerPeliculasAlquiladas, obtenerPeliculasCatalogo, obtenerPeliculasTMDB } from '../utils/apiFunctions';
 import CardMovie from '../components/cardmovie/CardMovie';
 
 const MisPeliculas = () => {
 
   const { user } = useContext(userContext);
-  const [movies, setMovies] = useState([]);
+  const { moviesAlquiladas, setMoviesAlquiladas } = useContext(moviesAlquiladasContext);
+  
 
   const cargarPeliculas = async () => {
     let data = await obtenerPeliculasAlquiladas();
-    setMovies(data);
+    setMoviesAlquiladas(data);
   }
 
   useEffect(
@@ -36,7 +37,7 @@ const MisPeliculas = () => {
       <div className='container'>
         <div className='row pt-3 d-flex justify-content-center'>
           {
-            movies.map((movie) => (
+            moviesAlquiladas.map((movie) => (
               <CardMovie movie={movie} tipo="devolver"/>
             ))
           }

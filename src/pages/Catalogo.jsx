@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 
-import { userContext } from '../App'
+import { userContext, moviesCatalogoContext } from '../App'
 import { obtenerPeliculasCatalogo } from '../utils/apiFunctions';
 import CardMovie from '../components/cardmovie/CardMovie';
 import { Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Catalogo = () => {
 
   const { user } = useContext(userContext);
-  const [movies, setMovies] = useState([]);
+  const {moviesCatalogo, setMoviesCatalogo} = useContext(moviesCatalogoContext);
 
   let tipo = "agregar";
   if(user.role==='ADMIN'){
@@ -17,7 +17,7 @@ const Catalogo = () => {
 
   const cargarPeliculas = async () => {
     let data = await obtenerPeliculasCatalogo();
-    setMovies(data);
+    setMoviesCatalogo(data);
   }
 
   useEffect(
@@ -41,7 +41,7 @@ const Catalogo = () => {
       <div className='container'>
         <div className='row pt-3 d-flex justify-content-center'>
           {
-            movies.map((movie) => (
+            moviesCatalogo.map((movie) => (
               <CardMovie movie={movie} tipo={tipo}/>
             ))
           }
