@@ -1,42 +1,14 @@
 import React, { useContext } from 'react'
 
-import { userContext, alertContext, moviesCatalogoContext, moviesAlquiladasContext } from "../../App"
-import { agregarPeliculaAlquilada, devolverPeliculaAlquilada, eliminarPeliculaCatalogo, guardarPeliculaCatalogo, obtenerPeliculasAlquiladas, obtenerPeliculasCatalogo } from '../../utils/apiFunctions';
+import { userContext } from "../../App"
+import { agregarPeliculaAlquilada, devolverPeliculaAlquilada, eliminarPeliculaCatalogo, guardarPeliculaCatalogo } from '../../utils/apiFunctions';
 
 const Devolver = ({movie}) => {
 
     const { user } = useContext(userContext);
-    const {setSwalProps} = useContext(alertContext);
-    const {setMoviesCatalogo} = useContext(moviesCatalogoContext);
-    const {setMoviesAlquiladas} = useContext(moviesAlquiladasContext);
 
-    const eliminarDelCatalogo = async () => {
-        let mensaje = await eliminarPeliculaCatalogo(movie.idPelicula);
-
-        if (mensaje == 204) {
-            setSwalProps({
-                show:true,
-                title:"Notificación",
-                text:"La película "+movie.title+" ha sido eliminada del catálogo"
-            })
-
-            let data = await obtenerPeliculasCatalogo();
-            setMoviesCatalogo(data);
-        }
-    }
-
-    const devolverPelicula = async () => {
-        let mensaje = await devolverPeliculaAlquilada(movie.idAlquilada);
-
-        if (mensaje == 204){
-            setSwalProps({
-                show:true,
-                title:"Notificación",
-                text:"La película "+movie.title+" ha sido devuelta"
-            })
-            let data = await obtenerPeliculasAlquiladas();
-            setMoviesAlquiladas(data);
-        }
+    const sololog = ()=>{
+        console.log("algo");
     }
 
     return (
@@ -45,7 +17,7 @@ const Devolver = ({movie}) => {
                 className='btn-danger position-absolute end-0 top-0 m-4'
                 onClick={
                     ()=>(
-                        user.role==='ADMIN'?eliminarDelCatalogo():devolverPelicula()
+                        user.role==='ADMIN'?eliminarPeliculaCatalogo(movie.idPelicula):devolverPeliculaAlquilada(movie.idAlquilada)
                     )
                 }
             >

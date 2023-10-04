@@ -8,8 +8,6 @@ export const loggedContext = React.createContext();
 export const userContext = React.createContext();
 export const alertContext = React.createContext();
 export const moviesTMDBContext = React.createContext();
-export const moviesCatalogoContext = React.createContext();
-export const moviesAlquiladasContext = React.createContext();
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -19,28 +17,22 @@ function App() {
   });
   const [swalProps, setSwalProps] = useState({});
   const [moviesTMDB, setMoviesTMDB] = useState([]);
-  const [moviesCatalogo, setMoviesCatalogo] = useState([]);
-  const [moviesAlquiladas, setMoviesAlquiladas] = useState([]);
 
   return (
     <>
-    <moviesAlquiladasContext.Provider value={{ moviesAlquiladas, setMoviesAlquiladas }}>
-      <moviesCatalogoContext.Provider value={{ moviesCatalogo, setMoviesCatalogo }}>
-        <moviesTMDBContext.Provider value={{ moviesTMDB, setMoviesTMDB }}>
-          <alertContext.Provider value={{ swalProps, setSwalProps }}>
-            <userContext.Provider value={{ user, setUser }}>
-              <loggedContext.Provider value={{ logged, setLogged }}>
-                <BrowserRouter>
-                  <Router />
-                </BrowserRouter>
-                <Alert />
-              </loggedContext.Provider>
-            </userContext.Provider>
-          </alertContext.Provider>
-        </moviesTMDBContext.Provider>
-      </moviesCatalogoContext.Provider>
-    </moviesAlquiladasContext.Provider>
-
+      <moviesTMDBContext.Provider value={{ moviesTMDB, setMoviesTMDB }}>
+        <alertContext.Provider value={{ swalProps, setSwalProps }}>
+          <userContext.Provider value={{ user, setUser }}>
+            <loggedContext.Provider value={{ logged, setLogged }}>
+              <BrowserRouter>
+                
+                <Router />
+              </BrowserRouter>
+              <Alert />
+            </loggedContext.Provider>
+          </userContext.Provider>
+        </alertContext.Provider>
+      </moviesTMDBContext.Provider>
     </>
   );
 }
