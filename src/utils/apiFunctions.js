@@ -220,6 +220,47 @@ const agregarPeliculaAlquilada = async (movie) => {
     return mensaje;
 }
 
+const eliminarPeliculaCatalogo = async (idPelicula)=>{
+
+    let mensaje = "";
+    let jwt = getJwt();
+
+    await axios.delete(
+        API_ENDPOINTS.peliculacatalogo+"/"+idPelicula,
+        {
+            headers: {
+                'Authorization': `Bearer ${jwt}`
+            }
+        }
+    ).then((res)=>{
+        console.log(res.status);
+        mensaje = res.status; 
+    })
+
+    return mensaje;
+
+}
+
+const devolverPeliculaAlquilada = async (idAlquilada)=>{
+
+    let mensaje = "";
+    let jwt = getJwt();
+
+    await axios.delete(
+        API_ENDPOINTS.mispeliculas+"/"+idAlquilada,
+        {
+            headers: {
+                'Authorization': `Bearer ${jwt}`
+            }
+        }
+    ).then((res)=>{
+        console.log(res.status);
+        mensaje = res.status; 
+    })
+
+    return mensaje;
+}
+
 
 export {
     isLogged,
@@ -231,5 +272,7 @@ export {
     obtenerPeliculasAlquiladas,
     guardarPeliculaCatalogo,
     logout,
-    agregarPeliculaAlquilada
+    agregarPeliculaAlquilada,
+    eliminarPeliculaCatalogo,
+    devolverPeliculaAlquilada
 }

@@ -2,15 +2,20 @@ import React from 'react'
 import { API_ENDPOINTS } from '../../utils/apiEndpoints';
 import "./CardMovie.css"
 import Alquilar from '../alquilar/Alquilar';
+import Devolver from '../devolver/Devolver';
 
 const CardMovie = ({movie, tipo}) => {
 
 let id = movie.idPelicula===undefined?movie.idAlquilada:movie.idPelicula;
 let tipoBoton = "";
 
-if(tipo==='alquilar' || tipo==='agregar'){
+if(tipo==='agregar'){
   tipoBoton = <Alquilar movie={movie}/>
 }
+if(tipo==='devolver'){
+  tipoBoton = <Devolver movie={movie}/>
+}
+
 
 
   return (
