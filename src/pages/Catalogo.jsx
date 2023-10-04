@@ -7,14 +7,8 @@ import { Link } from 'react-router-dom';
 
 const Catalogo = () => {
 
-  let tipo = "agregar";
-
   const { user } = useContext(userContext);
   const [movies, setMovies] = useState([]);
-
-  if(user.role==='ADMIN'){
-    tipo="devolver";
-  }
 
   const cargarPeliculas = async () => {
     let data = await obtenerPeliculasCatalogo();
@@ -43,7 +37,7 @@ const Catalogo = () => {
         <div className='row pt-3 d-flex justify-content-center'>
           {
             movies.map((movie) => (
-              <CardMovie movie={movie} tipo={tipo}/>
+              <CardMovie movie={movie} tipo="agregar"/>
             ))
           }
         </div>
