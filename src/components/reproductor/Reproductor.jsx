@@ -38,9 +38,9 @@ const Reproductor = () => {
                 {
                     moviePlay ? (
 
-                        <div className={`viewtrailer ${!trailer ? 'd-none' : 'd-flex'} `}>
+                        <div className={`view-trailer ${!trailer ? 'd-none' : 'd-flex'} `}>
 
-                            <img src={`${API_ENDPOINTS.urlImage}${moviePlay.backdrop_path}`}
+                            <img src={`${API_ENDPOINTS.urlImage}${moviePlay.backrop_path}`}
                                 className={!trailer ? 'd-none' : 'd-block'}
                             />
                             {playing ? (
@@ -48,7 +48,7 @@ const Reproductor = () => {
                                     <YouTube
                                         videoId={trailer}
                                         className='reproductor'
-                                        containerClassName={"youtube-container-amru"}
+                                        containerClassNAme={"youtube-container-amru"}
                                         opts={{
                                             width: "100%",
                                             height: "100%",
@@ -63,18 +63,21 @@ const Reproductor = () => {
                                                 showinfo: 0
                                             }
                                         }}
-                                    />
-                                    <button onClick={() => setPlaying(false)} className="boton btn-cerrar">
-                                        Close
-                                    </button>
-                                </>
-                            ) : (<InfoBanner movie={moviePlay} HandlerUpdatePlaying={(state) => updatePLaying} />)}
-                        </div>
-                    ) : (
-                        null
-                    )
-                }
-            </main>
+                                    >
+                                        <button onClick={() => setPlaying(false)} className="boton btn-cerrar">
+                                            Close
+                                        </button>
+                                    </>
+    ):(<InfoBanner movie={moviePlay} HandlerUpdatePlaying={(state)=>updatePLaying}/>)}
+                                </div>
+                            ):(
+
+                            )
+            }
+
+
+                        </main>
+
         </div>
     )
 }
