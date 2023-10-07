@@ -10,7 +10,6 @@ export const alertContext = React.createContext();
 export const moviesTMDBContext = React.createContext();
 export const moviesCatalogoContext = React.createContext();
 export const moviesAlquiladasContext = React.createContext();
-export const moviePlayContext = React.createContext();
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -22,13 +21,11 @@ function App() {
   const [moviesTMDB, setMoviesTMDB] = useState([]);
   const [moviesCatalogo, setMoviesCatalogo] = useState([]);
   const [moviesAlquiladas, setMoviesAlquiladas] = useState([]);
-  const [moviePlay, setMoviePlay] = useState([]);
-
 
   return (
     <>
-    <moviePlayContext.Provider value={{ moviePlay, setMoviePlay }}>
       <moviesAlquiladasContext.Provider value={{ moviesAlquiladas, setMoviesAlquiladas }}>
+
         <moviesCatalogoContext.Provider value={{ moviesCatalogo, setMoviesCatalogo }}>
           <moviesTMDBContext.Provider value={{ moviesTMDB, setMoviesTMDB }}>
             <alertContext.Provider value={{ swalProps, setSwalProps }}>
@@ -44,7 +41,6 @@ function App() {
           </moviesTMDBContext.Provider>
         </moviesCatalogoContext.Provider>
       </moviesAlquiladasContext.Provider>
-    </moviePlayContext.Provider>
 
     </>
   );

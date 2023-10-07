@@ -151,12 +151,10 @@ const obtenerPeliculasAlquiladas = async () => {
                             idAlquilada: movie.idAlquilada,
                             poster_path: movie.peliculaCatalogo.poster_path,
                             title: movie.peliculaCatalogo.title,
-                            release_date: movie.peliculaCatalogo.release_date,
+                            release_data: movie.peliculaCatalogo.release_data,
                             original_language: movie.peliculaCatalogo.original_language,
                             vote_average: movie.peliculaCatalogo.vote_average,
                             overview: movie.peliculaCatalogo.overview,
-                            id:movie.peliculaCatalogo.id,
-                            backdrop_path:movie.peliculaCatalogo.backdrop_path
 
                         }
                     }
@@ -212,76 +210,55 @@ const agregarPeliculaAlquilada = async (movie) => {
                 'Authorization': `Bearer ${jwt}`
             }
         }
-    ).then((res) => {
+    ).then((res)=>{
         mensaje = res.data.idAlquilada
     })
-        .catch((error) => {
-            mensaje = error.response.data.mensaje
-        })
+    .catch((error)=>{
+        mensaje = error.response.data.mensaje
+    })
 
     return mensaje;
 }
 
-const eliminarPeliculaCatalogo = async (idPelicula) => {
+const eliminarPeliculaCatalogo = async (idPelicula)=>{
 
     let mensaje = "";
     let jwt = getJwt();
 
     await axios.delete(
-        API_ENDPOINTS.peliculacatalogo + "/" + idPelicula,
+        API_ENDPOINTS.peliculacatalogo+"/"+idPelicula,
         {
             headers: {
                 'Authorization': `Bearer ${jwt}`
             }
         }
-    ).then((res) => {
+    ).then((res)=>{
         console.log(res.status);
-        mensaje = res.status;
+        mensaje = res.status; 
     })
 
     return mensaje;
 
 }
 
-const devolverPeliculaAlquilada = async (idAlquilada) => {
+const devolverPeliculaAlquilada = async (idAlquilada)=>{
 
     let mensaje = "";
     let jwt = getJwt();
 
     await axios.delete(
-        API_ENDPOINTS.mispeliculas + "/" + idAlquilada,
+        API_ENDPOINTS.mispeliculas+"/"+idAlquilada,
         {
             headers: {
                 'Authorization': `Bearer ${jwt}`
             }
         }
-    ).then((res) => {
+    ).then((res)=>{
         console.log(res.status);
-        mensaje = res.status;
+        mensaje = res.status; 
     })
 
     return mensaje;
-}
-
-const obtenerIdVideo = async (id) => {
-
-    let video = "";
-    let jwt = getJwt();
-
-    await axios.get(API_ENDPOINTS.video, {
-
-        headers: {
-            'Authorization': `Bearer ${jwt}`
-        }
-
-    }).then(
-        (res)=>{
-            video = res.data.key;
-        }
-    )
-
-    return video;
-
 }
 
 
@@ -297,6 +274,5 @@ export {
     logout,
     agregarPeliculaAlquilada,
     eliminarPeliculaCatalogo,
-    devolverPeliculaAlquilada,
-    obtenerIdVideo
+    devolverPeliculaAlquilada
 }
