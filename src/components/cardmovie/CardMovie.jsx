@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { API_ENDPOINTS } from '../../utils/apiEndpoints';
 import "./CardMovie.css"
 import Alquilar from '../alquilar/Alquilar';
 import Devolver from '../devolver/Devolver';
 
+import iconReproductor from '../assets/icon-reproductor.png'
+
+import { moviePlayContext } from '../../App';
+
 const CardMovie = ({movie, tipo}) => {
 
 let id = movie.idPelicula===undefined?movie.idAlquilada:movie.idPelicula;
 let tipoBoton = "";
+
+const{setMoviePlay} = useContext(moviePlayContext);
+
+const actualizarMovie = ()=>{
+  console.log(movie);
+  setMoviePlay(movie);
+}
+
 
 if(tipo==='agregar'){
   tipoBoton = <Alquilar movie={movie}/>
@@ -26,6 +38,8 @@ if(tipo==='devolver'){
 
       <div className='border'>
         <div>
+          {tipo == 'devolver' ? 
+          <img src={ iconReproductor } className='icon-play' onClick={actualizarMovie} /> : ''}
           <img 
           src={`${API_ENDPOINTS.urlImage + movie.poster_path}` } 
           alt={movie.title} 
