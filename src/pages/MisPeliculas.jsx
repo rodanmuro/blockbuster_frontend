@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { userContext, moviesAlquiladasContext } from '../App'
 import { obtenerPeliculasAlquiladas, obtenerPeliculasCatalogo, obtenerPeliculasTMDB } from '../utils/apiFunctions';
 import CardMovie from '../components/cardmovie/CardMovie';
+import Reproductor from '../components/reproductor/Reproductor';
 
 const MisPeliculas = () => {
 
@@ -31,6 +32,12 @@ const MisPeliculas = () => {
           <h2 className='text-center py-5'>
             Mis Películas
           </h2>
+        </div>
+      </div>
+
+      <div className='row sin-m'>
+        <div className='col-12'>
+          <Reproductor/>
         </div>
       </div>
 

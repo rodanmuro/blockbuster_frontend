@@ -38,9 +38,9 @@ const Reproductor = () => {
                 {
                     moviePlay ? (
 
-                        <div className={`view-trailer ${!trailer ? 'd-none' : 'd-flex'} `}>
+                        <div className={`viewtrailer ${!trailer ? 'd-none' : 'd-flex'} `}>
 
-                            <img src={`${API_ENDPOINTS.urlImage}${moviePlay.backrop_path}`}
+                            <img src={`${API_ENDPOINTS.urlImage}${moviePlay.backdrop_path}`}
                                 className={!trailer ? 'd-none' : 'd-block'}
                             />
                             {playing ? (
@@ -63,7 +63,7 @@ const Reproductor = () => {
                                                 showinfo: 0
                                             }
                                         }}
-                                    >
+                                    />
                                         <button onClick={() => setPlaying(false)} className="boton btn-cerrar">
                                             Close
                                         </button>
@@ -71,7 +71,7 @@ const Reproductor = () => {
     ):(<InfoBanner movie={moviePlay} HandlerUpdatePlaying={(state)=>updatePLaying}/>)}
                                 </div>
                             ):(
-
+                                null
                             )
             }
 
