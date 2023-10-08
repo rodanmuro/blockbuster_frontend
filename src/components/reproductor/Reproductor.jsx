@@ -63,7 +63,7 @@ const Reproductor = () => {
                                                 showinfo: 0
                                             }
                                         }}
-                                    >
+                                    />
                                         <button onClick={() => setPlaying(false)} className="boton btn-cerrar">
                                             Close
                                         </button>
@@ -71,7 +71,7 @@ const Reproductor = () => {
     ):(<InfoBanner movie={moviePlay} HandlerUpdatePlaying={(state)=>updatePLaying}/>)}
                                 </div>
                             ):(
-
+                                null
                             )
             }
 
