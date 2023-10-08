@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://blockbusterbackend-production.up.railway.app"
+const API_BASE_URL = "https://blockbusterbackend-production.up.railway.app"
 
 const API_ENDPOINTS = {
     login: `${API_BASE_URL}/login`,
