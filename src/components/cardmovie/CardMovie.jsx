@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { API_ENDPOINTS } from '../../utils/apiEndpoints';
 import "./CardMovie.css"
 import Alquilar from '../alquilar/Alquilar';
 import Devolver from '../devolver/Devolver';
+
+import iconReproductor from "../../assets/icon-reproductor.png"
+import { moviePlayContext } from '../../App';
 
 const CardMovie = ({movie, tipo}) => {
 
@@ -14,6 +17,12 @@ if(tipo==='agregar'){
 }
 if(tipo==='devolver'){
   tipoBoton = <Devolver movie={movie}/>
+}
+
+const{setMoviePlay} = useContext(moviePlayContext);
+
+const actualizarMoviePlay = ()=>{
+  setMoviePlay(movie);
 }
 
 
@@ -32,6 +41,15 @@ if(tipo==='devolver'){
           className='img-movie'
           />
         </div>
+
+        {
+          tipo=="devolver"?
+          <img 
+          src={iconReproductor}
+          className='icon-play'
+          onClick={actualizarMoviePlay} 
+           />:""
+        }
 
         {tipoBoton}
 
