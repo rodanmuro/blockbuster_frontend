@@ -1,6 +1,10 @@
 import React, { useContext } from 'react'
 
+<<<<<<< HEAD
 import { userContext, setSwalProps, alertContext, moviesCatalogoContext, moviesAlquiladasContext,moviePlayContext } from "../../App"
+=======
+import { userContext, setSwalProps, alertContext, moviesCatalogoContext, moviesAlquiladasContext, moviePlayContext } from "../../App"
+>>>>>>> 76582f2ef789213711974e7a0e95d55a8e6b0366
 import { agregarPeliculaAlquilada, devolverPeliculaAlquilada, eliminarPeliculaCatalogo, guardarPeliculaCatalogo, obtenerPeliculasAlquiladas, obtenerPeliculasCatalogo } from '../../utils/apiFunctions';
 
 const Devolver = ({movie}) => {
@@ -9,7 +13,11 @@ const Devolver = ({movie}) => {
     const {setSwalProps} = useContext(alertContext);
     const {setMoviesCatalogo} = useContext(moviesCatalogoContext);
     const {setMoviesAlquiladas} = useContext(moviesAlquiladasContext);
+<<<<<<< HEAD
     const {moviePlay, setMoviePlay} = useContext(moviePlayContext)
+=======
+    const {moviePlay, setMoviePlay} = useContext(moviePlayContext);
+>>>>>>> 76582f2ef789213711974e7a0e95d55a8e6b0366
 
     const eliminarDelCatalogo = async () => {
         let mensaje = await eliminarPeliculaCatalogo(movie.idPelicula);
@@ -42,6 +50,11 @@ const Devolver = ({movie}) => {
 
             let data = await obtenerPeliculasAlquiladas();
             setMoviesAlquiladas(data);
+
+            if(movie.id==moviePlay.id){
+                setMoviePlay([]);
+            }
+            
         }
 
     }
