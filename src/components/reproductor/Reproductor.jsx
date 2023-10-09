@@ -36,7 +36,7 @@ const Reproductor = () => {
             <main className='seccion-reproductor'>
 
                 {
-                    moviePlay ? (
+                    moviePlay.id ? (
 
                         <div className={`viewtrailer ${!trailer ? 'd-none' : 'd-flex'} `}>
 
@@ -64,19 +64,19 @@ const Reproductor = () => {
                                             }
                                         }}
                                     />
-                                        <button onClick={() => setPlaying(false)} className="boton btn-cerrar">
-                                            Close
-                                        </button>
-                                    </>
-    ):(<InfoBanner movie={moviePlay} HandlerUpdatePlaying={(state)=>updatePLaying}/>)}
-                                </div>
-                            ):(
-                                null
-                            )
-            }
+                                    <button onClick={() => setPlaying(false)} className="boton btn-cerrar">
+                                        Close
+                                    </button>
+                                </>
+                            ) : (<InfoBanner movie={moviePlay} HandlerUpdatePlaying={(state) => updatePLaying} />)}
+                        </div>
+                    ) : (
+                        null
+                    )
+                }
 
 
-                        </main>
+            </main>
 
         </div>
     )

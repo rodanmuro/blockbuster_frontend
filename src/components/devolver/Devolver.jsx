@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { userContext, setSwalProps, alertContext, moviesCatalogoContext, moviesAlquiladasContext } from "../../App"
+import { userContext, setSwalProps, alertContext, moviesCatalogoContext, moviesAlquiladasContext,moviePlayContext } from "../../App"
 import { agregarPeliculaAlquilada, devolverPeliculaAlquilada, eliminarPeliculaCatalogo, guardarPeliculaCatalogo, obtenerPeliculasAlquiladas, obtenerPeliculasCatalogo } from '../../utils/apiFunctions';
 
 const Devolver = ({movie}) => {
@@ -9,6 +9,7 @@ const Devolver = ({movie}) => {
     const {setSwalProps} = useContext(alertContext);
     const {setMoviesCatalogo} = useContext(moviesCatalogoContext);
     const {setMoviesAlquiladas} = useContext(moviesAlquiladasContext);
+    const {moviePlay, setMoviePlay} = useContext(moviePlayContext)
 
     const eliminarDelCatalogo = async () => {
         let mensaje = await eliminarPeliculaCatalogo(movie.idPelicula);
@@ -34,6 +35,10 @@ const Devolver = ({movie}) => {
                 title:"Notificación",
                 text:"La película "+movie.title+" ha sido devuelta"
             })
+
+            if(moviePlay.id==movie.id){
+                setMoviePlay([]);
+            }
 
             let data = await obtenerPeliculasAlquiladas();
             setMoviesAlquiladas(data);
