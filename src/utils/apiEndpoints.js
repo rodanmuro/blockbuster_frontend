@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://blockbusterbackend-production.up.railway.app"
+const API_BASE_URL = process.env.REACT_APP_API_DOMAIN;
 
 const API_ENDPOINTS = {
     login: `${API_BASE_URL}/login`,
